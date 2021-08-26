@@ -2,6 +2,7 @@
 
 # Kirjastojen ja modulien lataukset
 import datetime
+
 # Globaalit muuttujat
 
 # Sanakirja, jossa vuosisatakoodit ja vastaavat vuosisadat
@@ -13,6 +14,7 @@ tarkisteet = {0: '0', 1: '1', 2: '2', 3: '3',
 
 # Muuttuja, jossa on kuluva päivä ja kellonaika
 nyt = datetime.datetime.now()
+
 # Modulin funktiot
 def tarkista_hetu(hetu):
     """Tarkistaa, että henkilötunnus on oikein muodostettu
@@ -56,7 +58,6 @@ def tarkista_hetu(hetu):
 
     return oikein
 
-
 def tarkista_pituus(hetu):
     """Tarkistaa henkilötunnuksen pituuden po. 11 merkkiä
 
@@ -75,7 +76,6 @@ def tarkista_pituus(hetu):
         pituus_ok = False
 
     return pituus_ok
-
 
 def selvita_sukupuoli(hetu):
     """Selvittää järjestynumeron perusteella sukupuolen: parillinen -> nainen, pariton -> mies
@@ -142,7 +142,8 @@ def laske_ika(hetu):
     paivien_ero = nyt - syntymapaiva_datetime
 
     return round(paivien_ero.days / 365)
-# Testataan erilaisia toimintoja kun tämä tiedosto ajetaan suoraan
+
+# Testataan erilaisia toimintoja, kun tämä tiedosto ajetaan suoraan
 if __name__ == '__main__':
     print(nyt)
     print('Ikä on', laske_ika('130728-478N'))
