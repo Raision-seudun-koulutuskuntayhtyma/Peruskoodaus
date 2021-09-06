@@ -1,4 +1,12 @@
+import datetime
+
 import stdnum.fi.hetu
+
+VUOSISADAT = {
+    '+': 1800,
+    '-': 1900,
+    'A': 2000,
+}
 
 
 class Henkilotunnus:
@@ -15,7 +23,23 @@ class Henkilotunnus:
         else:
             return "Mies"  # pariton = 1, 3, 5, 7, 9
 
+    def syntymapaiva(self):
+        paivays = datetime.datetime.strptime(self.hetu[:6], "%d%m%y").date()
+        vuosisata = VUOSISADAT[self.hetu[6]]  # välimerkki -> vuosisata
+        return paivays.replace(year=(vuosisata + (paivays.year % 100)))
+
+    def ika(self):
+        syntynyt = self.syntymapaiva()
+        tanaan = datetime.date.today()
+        vuosiero = tanaan.year - syntynyt.year
+        synttarit_tana_vuonna = syntynyt.replace(year=tanaan.year)
+        viettanyt_jo = (synttarit_tana_vuonna <= tanaan)
+        return (vuosiero if viettanyt_jo else vuosiero - 1)
+
+
 if __name__ == '__main__':
-    hetu = Henkilotunnus('010101-88XX')
-    sukupuoli = hetu.sukupuoli()
+    hetu_objekti = Henkilotunnus('010101-888B')
+    sukupuoli = hetu_objekti.sukupuoli()
     print("Henkilötunnuksen sukupuoli", sukupuoli)
+    ika = hetu_objekti.ika()
+    print("Ikä:", ika)
