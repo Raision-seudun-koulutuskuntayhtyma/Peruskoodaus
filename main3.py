@@ -9,7 +9,7 @@ class VakioHetu:
 
 
 def main():
-    ht = hetu3.Henkilotunnus('260283-242L')
+    ht = hetu3.Henkilotunnus('200588-987F')
     ht2 = VakioHetu()
     nayta_ika(ht)
     nayta_ika(ht2)
