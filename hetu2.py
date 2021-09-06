@@ -25,6 +25,7 @@ def ika(hetu):
     tanaan = datetime.date.today()
     vuosiero = tanaan.year - syntynyt.year
     synttarit_tana_vuonna = syntynyt.replace(year=tanaan.year)
-    if synttarit_tana_vuonna < tanaan:
-        return vuosiero - 1
-    return vuosiero
+    viettanyt_jo = (synttarit_tana_vuonna <= tanaan)
+    # Käytetään (A if EHTO else B) rakennetta, joka
+    # palauttaa A:n jos EHTO tosi, muuten B:n
+    return (vuosiero if viettanyt_jo else vuosiero - 1)
