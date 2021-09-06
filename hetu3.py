@@ -14,6 +14,9 @@ class Henkilotunnus:
         if not stdnum.fi.hetu.is_valid(teksti):
             raise Exception(f"Ei ole kelvollinen hetu: {teksti}")
         self.hetu = teksti  # aseta attribuuttiin "hetu" muuttujan teksti sisältö
+    
+    def __str__(self):
+        return f"HETU:{self.hetu}"
 
     def sukupuoli(self):
         toiseksi_viimenen_merkki = self.hetu[-2]
