@@ -24,14 +24,18 @@ LAJIT = {
 
 def luo_eläimet_csv_tiedostosta(tiedoston_nimi):
     eläimet = []
-    tiedosto = open(tiedoston_nimi)
-    csv_lukija = csv.DictReader(tiedosto)
-    for rivi in csv_lukija:
-        nimi = rivi["Nimi"]
-        paino = float(rivi["Paino"])
-        laji = LAJIT[rivi["Laji"].lower()]
-        eläin = laji(nimi, paino)
-        eläimet.append(eläin)
+
+    # with-lauseke pitää tiedosto auki niin kauan kuin ollaan sen
+    # sisällä.  Tiedosto suljetaan automaattisesti with-lausekkeen
+    # lopuksi tai jos tapahtuu virhe.
+    with open(tiedoston_nimi) as tiedosto:
+        csv_lukija = csv.DictReader(tiedosto)
+        for rivi in csv_lukija:
+            nimi = rivi["Nimi"]
+            paino = float(rivi["Paino"])
+            laji = LAJIT[rivi["Laji"].lower()]
+            eläin = laji(nimi, paino)
+            eläimet.append(eläin)
     return eläimet
 
 
