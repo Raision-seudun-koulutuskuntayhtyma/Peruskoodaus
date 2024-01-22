@@ -9,6 +9,11 @@ class Eläin:
     def nuku(self):
         print("Zzzz..")
 
+    def __str__(self):
+        return type(self).__name__ + ": " + self.nimi
+
+    # def __repr__(self):  # repr = representation eli esitys
+    #     return "<" + type(self).__name__ + ": " + self.nimi + ">"
 
 class Koira(Eläin):
     def tervehdi(self):
