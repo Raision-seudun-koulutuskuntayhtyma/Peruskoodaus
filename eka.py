@@ -49,11 +49,22 @@ juttuja = {         # sanakirja / dictionary (dict)
     "kolmas": 300,
 }
 
+print("Sanakirjan voi tulostaa ihan sellaisenaan:")
+print(juttuja)
+
+print("Sanakirjan avaimet voidaan käydä läpi for-loopilla:")
+for avain in juttuja:
+    print(avain)
+
+print("Arvot saadaan, kun kutsutaan values-metodia:")
 for arvo in juttuja.values():
     print(arvo)
 
-print("Printataan sanakirja:")
-print(juttuja)
+print("Avaimet ja arvot saadaan pareina käyttäen items-metodia:")
+for avain, arvo in juttuja.items():
+    print(avain, arvo)
+
+print("--- Sanakirjasta hakeminen:")
 
 print("Avainta 'eka' vastaava arvo:")
 print(juttuja["eka"])
@@ -64,6 +75,7 @@ print(juttuja.get("kolmas"))
 print("neljäs:")
 print(juttuja.get("neljäs"))
 
+print("Sanakirjaan uuden arvon lisääminen:")
 juttuja["neljäs"] = 400
 
 print("nyt neljäs on:")
@@ -71,10 +83,3 @@ print(juttuja["neljäs"])
 
 print("tai")
 print(juttuja.get("neljäs"))
-
-print("Avaimet ja niitä vastaavat arvot:")
-for avain in juttuja:
-    print("Avain:", avain)
-    print("Arvo:", juttuja[avain])
-    print()
-
