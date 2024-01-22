@@ -1,8 +1,11 @@
+import csv
+
 from eläimet import Kissa, Koira
 
 
 def main():
-    eläimet = luo_eläimet()
+    #eläimet = luo_eläimet_käyttäjän_syötteestä()
+    eläimet = luo_eläimet_csv_tiedostosta("eläimet.csv")
 
     # Tulosta eläimet
     print("Eläimet:")
@@ -13,7 +16,26 @@ def main():
     print("Painot yhteensä:", painot_yhteensä)
 
 
-def luo_eläimet():
+LAJIT = {
+    "kissa": Kissa,
+    "koira": Koira,
+}
+
+
+def luo_eläimet_csv_tiedostosta(tiedoston_nimi):
+    eläimet = []
+    tiedosto = open(tiedoston_nimi)
+    csv_lukija = csv.DictReader(tiedosto)
+    for rivi in csv_lukija:
+        nimi = rivi["Nimi"]
+        paino = float(rivi["Paino"])
+        laji = LAJIT[rivi["Laji"].lower()]
+        eläin = laji(nimi, paino)
+        eläimet.append(eläin)
+    return eläimet
+
+
+def luo_eläimet_käyttäjän_syötteestä():
     eläimet = []
     while True:  # Looppaa "ikuisesti"
         eläin = luo_eläin()
