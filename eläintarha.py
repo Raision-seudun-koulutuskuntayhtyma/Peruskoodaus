@@ -9,6 +9,9 @@ def main():
     for eläin in eläimet:
         print(eläin)
 
+    painot_yhteensä = sum(eläin.paino_kg for eläin in eläimet)
+    print("Painot yhteensä:", painot_yhteensä)
+
 
 def luo_eläimet():
     eläimet = []
