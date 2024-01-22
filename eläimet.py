@@ -23,24 +23,24 @@ class Kissa(Eläin):
         print("Purr...")
 
 
-# Luodaan kaksi oliota (object), koira ja kissa:
-koira = Koira("Musti", 12)
-kissa = Kissa("Kisu", 4)
+if __name__ == "__main__":
+    # Luodaan kaksi oliota (object), koira ja kissa:
+    koira = Koira("Musti", 12)
+    kissa = Kissa("Kisu", 4)
 
-# lista-muuttuja alla on list-luokan olio
-lista = [1, 2, 3]
+    # lista-muuttuja alla on list-luokan olio
+    lista = [1, 2, 3]
 
+    # Attribuuttien käyttäminen onnistuu pisteen avulla
+    print("Koiran nimi:", koira.nimi)
+    print("Kissan nimi:", kissa.nimi)
+    print("Koiran paino:", koira.paino_kg, "kg")
+    print("Kissan paino:", kissa.paino_kg, "kg")
 
-# Attribuuttien käyttäminen onnistuu pisteen avulla
-print("Koiran nimi:", koira.nimi)
-print("Kissan nimi:", kissa.nimi)
-print("Koiran paino:", koira.paino_kg, "kg")
-print("Kissan paino:", kissa.paino_kg, "kg")
+    print("Kutsutaan tervehdi-metodia koirasta ja kissasta:")
+    koira.tervehdi()
+    kissa.tervehdi()
 
-print("Kutsutaan tervehdi-metodia koirasta ja kissasta:")
-koira.tervehdi()
-kissa.tervehdi()
-
-print("Kokeillaan nuku-metodia:")
-koira.nuku()
-kissa.nuku()
+    print("Kokeillaan nuku-metodia:")
+    koira.nuku()
+    kissa.nuku()
